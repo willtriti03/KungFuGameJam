@@ -6,16 +6,10 @@ public class HitCollider : MonoBehaviour {
     public float damage = 10.0f;
     public bool isAttack = false;
 
-    
-    // Use this for initialization
-    void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool damaged = false;
+
+    [SerializeField]
+    string[] parts;
 
     public void OnAttack()
     {
@@ -29,11 +23,11 @@ public class HitCollider : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        if(isAttack && (col.tag=="Player"|| col.name=="ForeArm" || col.name=="UpperArm") )
+        if(isAttack && ( col.name=="Body") )
         {
+            Debug.Log("Called");
             isAttack = false;
-            
-            col.gameObject.GetComponent<HpManager>().DamageInit();
+            damaged = true;
         }
     }
 }

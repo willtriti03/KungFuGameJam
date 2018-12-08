@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public GageManager myGage;
+    public GageManager enemyGage;
     public int lookingSide;
     public float jumpPower;
     public KeyCode[] code = new KeyCode[3];
@@ -13,27 +15,49 @@ public class Character : MonoBehaviour
 
     private Rigidbody rigid;
     private bool m_jumping = false;
-    private bool isAttack = false;
+    public bool isAttack = false;
     private bool isTimer = false;
     private float speed = 10f;
     private float delay;
-    private float curTime;
+    public float curTime;
+
+    public Animator anim;
+    [SerializeField]
+    private HitCollider upper;
+    [SerializeField]
+    private HitCollider middle;
+    [SerializeField]
+    private HitCollider down;
 
     // Use this for initialization
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
-       
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-       
+        if(myGage.GetPlayerHealth()<1f)
+        {
+            anim.SetBool("gg", true);
+        }
+
+        if(upper.damaged || middle.damaged || down.damaged)
+        {
+            upper.damaged = false;
+            middle.damaged = false;
+            down.damaged = false;
+            enemyGage.DamagePlayer(10);
+            enemy.GetComponent<Character>().anim.SetTrigger("dm");
+
+        }
+
         if (isTimer) {
             curTime += Time.deltaTime;
-            if (curTime == delay) {
+            if (curTime >= delay) {
                 isAttack = false;
                 isTimer = false;
                 curTime = 0;
@@ -65,7 +89,8 @@ public class Character : MonoBehaviour
         if (Input.GetKey(code[1])) {
             MoveRight();
         }
-        if (Input.GetKey(code[2])) {
+        if (Input.GetKeyUp(code[2])) {
+           
             switch ((int)Random.Range(0,4)) {
                 case 0:
                     JumpAttack();
@@ -84,52 +109,79 @@ public class Character : MonoBehaviour
         if (Input.GetKeyUp(code[0])||(Input.GetKeyUp(code[1])))
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-
+            if (lookingSide == -1)
+            {
+                anim.SetBool("wk", false);
+                anim.SetBool("wk_bk", false);
+            }
+            else
+            {
+                anim.SetBool("wk", false);
+                anim.SetBool("wk_bk", false);
+            }
 
         }
 
     }
 
     void MoveLeft() {
-        transform.Translate(-Vector3.forward * speed * Time.deltaTime);
-        //gameObject.GetComponent<Rigidbody>().velocity = new Vector3( -speed ,0,0);
+        gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + (Vector3.left * speed * Time.deltaTime));
+
+        if (!isAttack)
+        {
+            if (lookingSide == -1)
+            {
+                anim.SetBool("wk", true);
+            }
+            else
+            {
+                anim.SetBool("wk_bk", true);
+            }
+        }
     }
 
     void MoveRight() {
-        //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(speed , 0, 0);
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        gameObject.GetComponent<Rigidbody>().MovePosition(transform.position - (Vector3.left * speed * Time.deltaTime));
 
+        if (lookingSide == 1)
+        {
+            anim.SetBool("wk", true); 
+        }
+        else
+        {
+            anim.SetBool("wk_bk", true);
+        }
     }
     void JumpAttack() {
         if (!isAttack)
         {
             isAttack = true;
             rigid.AddForce(Vector3.up * jumpPower);
-            //애니메이션 ㄲㄲ
-            DelayAttack(0.8f);
+            anim.SetTrigger("jk");
+            DelayAttack(0.4f);
             m_jumping = true;
         }
     }
     void TopAttack() {
         if (!isAttack) {
             isAttack = true;
-            //애니메이션 ㄲㄲ
-            DelayAttack(0.8f);
+            anim.SetTrigger("ta");
+            DelayAttack(0.4f);
         }
     }
     void MiddleAttack()
     {
         if (!isAttack) {
             isAttack = true;
-            //애니메이션 ㄲㄲ
-            DelayAttack(0.8f);
+            anim.SetTrigger("ma");
+            DelayAttack(0.4f);
         }
     }
     void BottomAttack() {
         if (!isAttack) {
             isAttack = true;
-            //애니메이션 ㄲㄲ
-            DelayAttack(0.8f);
+            anim.SetTrigger("ba");
+            DelayAttack(0.4f);
         }
     }
 
@@ -159,4 +211,33 @@ public class Character : MonoBehaviour
        
     }
 
+    public void OnUpper()
+    {
+        upper.OnAttack();
+    }
+
+    public void OffUpper()
+    {
+        upper.OffAttack();
+    }
+
+    public void OnMiddle()
+    {
+        middle.OnAttack();
+    }
+
+    public void OffMiddle()
+    {
+        middle.OffAttack();
+    }
+
+    public void OnDown()
+    {
+        down.OnAttack();
+    }
+
+    public void OffDown()
+    {
+        down.OffAttack();
+    }
 }

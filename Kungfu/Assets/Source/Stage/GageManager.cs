@@ -8,6 +8,7 @@ public class GageManager : MonoBehaviour {
     public Image winner_image;
     public Image player_gage;
     public CountStarter countStarter;
+    public Animator anim;
 
     public float player_health = 100f;
 
@@ -21,7 +22,7 @@ public class GageManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player_gage.GetComponent<Image>().fillAmount = player_health / 100f;
-     
+        anim = GetComponent<Animator>();
 
     }
 
@@ -52,15 +53,20 @@ public class GageManager : MonoBehaviour {
                 winner_image.sprite = winner;
                 countStarter.off();
             }
+           
         }
 
       
 
     }
     public void DamagePlayer(int damage) {
+        Debug.Log(player_health);
         this.damage += damage;
         cal -= damage;
     }
 
+    public float GetPlayerHealth() {
+        return player_health;
+    }
     
 }
