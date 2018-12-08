@@ -49,7 +49,6 @@ public class GageManager : MonoBehaviour {
             full_damage = 0;
             damage = 0;
             if (player_health <= 0) {
-                winner_image.gameObject.SetActive(true);
                 winner_image.sprite = winner;
                 countStarter.off();
             }

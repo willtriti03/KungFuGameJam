@@ -708,16 +708,17 @@ MonoBehaviour:
   - {fileID: 737366539}
   - {fileID: 937597194}
   nameString:
-  - "\uB354 \uD0B9\uC624\uBE0C \uD30C\uC774\uD13095"
-  - "\uB354 \uD0B9\uC624\uBE0C \uD30C\uC774\uD13096"
-  - "\uB354 \uD0B9\uC624\uBE0C \uD30C\uC774\uD13097"
-  - "\uB354 \uD0B9\uC624\uBE0C \uD30C\uC774\uD13098"
-  - "\uC288\uD37C\uB9C8\uB9AC\uC6241"
-  - "\uC288\uD37C\uB9C8\uB9AC\uC6242"
-  - "\uC288\uD37C\uB9C8\uB9AC\uC6243"
-  - "\uCCA0\uAD8C \uD0DC\uADF8"
-  - "\uC544\uB791\uC804\uC1241"
-  - "\uC544\uB791\uC804\uC1242"
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
   left: {fileID: 2060874984}
   right: {fileID: 105427189}
 --- !u!4 &942643378
