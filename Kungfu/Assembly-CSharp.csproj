@@ -70,6 +70,8 @@
     <Compile Include="Assets\PyroParticles\Prefab\Script\FireProjectileScript.cs" />
     <Compile Include="Assets\PyroParticles\Prefab\Script\MeteorSwarmScript.cs" />
     <Compile Include="Assets\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
+    <Compile Include="Assets\Source\InGame\Character.cs" />
+    <Compile Include="Assets\Source\InGame\Wall.cs" />
     <Compile Include="Assets\Source\Main\ColorChanger.cs" />
     <Compile Include="Assets\Source\Main\MainSoundManager.cs" />
     <Compile Include="Assets\Source\Main\SceneManager.cs" />
