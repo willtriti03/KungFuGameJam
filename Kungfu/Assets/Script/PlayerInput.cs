@@ -16,8 +16,7 @@ public class PlayerInput : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
-        
+
         if (Input.GetAxis("Horizontal") != 0)
         {
             anim.SetBool("wk", true);
@@ -74,14 +73,33 @@ public class PlayerInput : MonoBehaviour {
             }
         }
 	}
-    
+    public void OnUpper()
+    {
+        upper.OnAttack();
+    }
+
     public void OnMiddle()
     {
         middle.OnAttack();
     }
 
+    public void OnDown()
+    {
+        down.OnAttack();
+    }
+
+    public void OffUpper()
+    {
+        upper.OffAttack();
+    }
+
     public void OffMiddle()
     {
         middle.OffAttack();
+    }
+
+    public void OffDown()
+    {
+        down.OffAttack();
     }
 }
