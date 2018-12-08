@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GageManager : MonoBehaviour {
+    public Sprite winner;
+    public Image winner_image;
     public Image player_gage;
+    public CountStarter countStarter;
 
     public float player_health = 100f;
 
@@ -45,6 +48,10 @@ public class GageManager : MonoBehaviour {
         {
             full_damage = 0;
             damage = 0;
+            if (player_health <= 0) {
+                winner_image.sprite = winner;
+                countStarter.off();
+            }
         }
 
       

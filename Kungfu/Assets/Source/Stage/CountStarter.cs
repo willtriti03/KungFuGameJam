@@ -26,8 +26,21 @@ public class CountStarter : MonoBehaviour {
         if (startTime >= 3.3f)
         {
             Destroy(go);
+            player1.GetComponent<Character>().isStart = true;
+            player2.GetComponent<Character>().isStart = true;
+
         }
         readyTime += Time.deltaTime;
         startTime += Time.deltaTime;
+    }
+
+    public void off() {
+        player1.GetComponent<Character>().isStart = true;
+        player2.GetComponent<Character>().isStart = true;
+        Invoke("ChangeScene", 2);
+    }
+
+    void ChangeScene() {
+        Application.LoadLevel("LoadingScene");
     }
 }

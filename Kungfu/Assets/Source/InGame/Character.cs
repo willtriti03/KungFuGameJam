@@ -9,11 +9,13 @@ public class Character : MonoBehaviour
     public KeyCode[] code = new KeyCode[3];
     public Transform tr;
     public GameObject enemy;
+    public bool isStart = false;
+
     private Rigidbody rigid;
     private bool m_jumping = false;
     private bool isAttack = false;
     private bool isTimer = false;
-    private float speed = 5f;
+    private float speed = 10f;
     private float delay;
     private float curTime;
 
@@ -38,8 +40,11 @@ public class Character : MonoBehaviour
                 delay = 0;
             }
         }
-        MoveControll();
-        TurnAround();
+        if (isStart)
+        {
+            MoveControll();
+            TurnAround();
+        }
     }
     void OnCollisionEnter(Collision col)
     {
@@ -76,14 +81,24 @@ public class Character : MonoBehaviour
                     break;
             }
         }
+        if (Input.GetKeyUp(code[0])||(Input.GetKeyUp(code[1])))
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+
+        }
+
     }
 
     void MoveLeft() {
         transform.Translate(-Vector3.forward * speed * Time.deltaTime);
+        //gameObject.GetComponent<Rigidbody>().velocity = new Vector3( -speed ,0,0);
     }
 
     void MoveRight() {
+        //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(speed , 0, 0);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
     }
     void JumpAttack() {
         if (!isAttack)
