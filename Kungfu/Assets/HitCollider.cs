@@ -5,7 +5,6 @@ using UnityEngine;
 public class HitCollider : MonoBehaviour {
     public float damage = 10.0f;
     public bool isAttack = false;
-
     
     // Use this for initialization
     void Start () {
