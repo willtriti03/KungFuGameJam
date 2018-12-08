@@ -72,10 +72,13 @@
     <Compile Include="Assets\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
     <Compile Include="Assets\Source\Main\ColorChanger.cs" />
     <Compile Include="Assets\Source\Main\MainSoundManager.cs" />
+    <Compile Include="Assets\Source\Main\SceneManager.cs" />
     <Compile Include="Assets\Source\Main\Selector.cs" />
     <Compile Include="Assets\Source\Main\StartBTN.cs" />
     <Compile Include="Assets\Source\Main\TextColorChanger.cs" />
-    <Compile Include="Assets\Source\Splash\SceneManager.cs" />
+    <Compile Include="Assets\Source\Splash\SplashSceneManager.cs" />
+    <Compile Include="Assets\Source\Stage\CountStarter.cs" />
+    <Compile Include="Assets\Source\Stage\GageManager.cs" />
     <None Include="Assets\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
     <None Include="Assets\PyroParticles\Readme.txt" />
     <Reference Include="UnityEditor.StandardEvents">
