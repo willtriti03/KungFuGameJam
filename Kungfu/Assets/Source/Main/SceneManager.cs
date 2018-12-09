@@ -12,7 +12,10 @@ public class SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetKey(KeyCode.Return))
+		{
+			NextScene();
+		}
 	}
 
     public void NextScene() {

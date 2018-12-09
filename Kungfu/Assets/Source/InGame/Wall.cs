@@ -18,6 +18,10 @@ public class Wall : MonoBehaviour {
         {
         }
         else if (curTime>20) {
+			if (ManagerScript.instance.gameEnd == true)
+			{
+				return;
+			}
             transform.Translate(viewSide * Vector3.right * speed * Time.deltaTime);
 
         }

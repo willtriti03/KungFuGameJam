@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1269160210276838}
+  m_IsPrefabAsset: 1
+--- !u!1 &1269160210276838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4855093273123710}
+  - component: {fileID: 114792256152198020}
+  m_Layer: 0
+  m_Name: explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4855093273123710
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269160210276838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.174, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114792256152198020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269160210276838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1802f020ea6609a4b9a71c7512aab750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Obsjects:
+  - {fileID: 1887338654608212, guid: 7bdff85f92a6dca4a825558de664c438, type: 2}
+  - {fileID: 1099083101720482, guid: f985ac039cfe7c44287b5b22e032d312, type: 2}
+  - {fileID: 1465600694047848, guid: 4f8b61a525a69cc43b136754c5e2311d, type: 2}
+  - {fileID: 1091664641058756, guid: 8e294e054d1db8543b87a50d5cc291ed, type: 2}
+  - {fileID: 1205814235404648, guid: fe3318e93a40cb44aa4962e6fde64aba, type: 2}
+  ORbs: []
+  InsObs: []
+  RndNum: []
+  RndForce: []
+  _expl: {fileID: 1366956512117536, guid: 20ddecafa83a0de4aa4af0208273c7e6, type: 2}
+  _minRangeForce: 0.2
+  _maxRangeForce: 0.4
+  _minRangeDegree: 20
+  _maxRangeDegree: 85
+  _maxExObject: 60
+  _maxCount: 6
+  _timePerDis: 0.01
+  _timePerDisObject: 10

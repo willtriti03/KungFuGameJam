@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CountStarter : MonoBehaviour {
-    public Image ready, go;
+    public Image ready, go ,msg;
     public GameObject player1, player2;
     float readyTime = 0f, startTime = 0f;
 	// Use this for initialization
 	void Start () {
         ready.gameObject.SetActive(true);
         go.gameObject.SetActive(false);
+		SoundManager.instance.PlaySound(9);
 	}
 	
 	// Update is called once per frame
@@ -19,9 +20,11 @@ public class CountStarter : MonoBehaviour {
         {
             if (ready != null)
             {
+				Destroy(msg);
                 Destroy(ready);
                 go.gameObject.SetActive(true);
-            }
+				SoundManager.instance.PlaySound(10);
+			}
         }
         if (startTime >= 3.3f)
         {
@@ -35,12 +38,12 @@ public class CountStarter : MonoBehaviour {
     }
 
     public void off() {
-        player1.GetComponent<Character>().isStart = true;
-        player2.GetComponent<Character>().isStart = true;
+        player1.GetComponent<Character>().isStart = false;
+        player2.GetComponent<Character>().isStart = false;
         Invoke("ChangeScene", 2);
     }
 
     void ChangeScene() {
-        Application.LoadLevel("LoadingScene");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene");
     }
 }

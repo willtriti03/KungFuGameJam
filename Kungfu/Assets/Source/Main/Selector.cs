@@ -54,7 +54,14 @@ public class Selector : MonoBehaviour {
             }
         }
         if (Input.GetKeyUp(KeyCode.Return) == true) {
-            Application.LoadLevel("SplashScene");
+            //Application.LoadLevel("SplashScene");
+			if(now == 4)
+				UnityEngine.SceneManagement.SceneManager.LoadScene("StageScene2");
+
+			else
+				UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+
+			
         }
     }
 
